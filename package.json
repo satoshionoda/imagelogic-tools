@@ -1,9 +1,9 @@
 {
   "name": "imagelogic-tools",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "typescript toolset for ImageLogic projects",
-  "main": "index.js",
-  "typings":"./imagelogic-tools.d.ts",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
   "scripts": {
     "test": "node_modules/.bin/karma start"
   },

@@ -6,7 +6,8 @@
     "target":"ES5",
     "sourceMap": true,
     "module":"commonjs",
-    "declaration":true
+    "declaration":true,
+    "lib":["dom", "es2015", "es2015.promise"]
   },
   "include": [
     "index.ts",
