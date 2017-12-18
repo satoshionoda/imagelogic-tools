@@ -1,6 +1,6 @@
 {
   "name": "imagelogic-tools",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "typescript toolset for ImageLogic projects",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -26,7 +26,7 @@
     "karma-nyan-reporter": "^0.2.5",
     "karma-remap-istanbul": "^0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-typescript": "^3.0.4",
+    "karma-typescript": "^3.0.9",
     "mocha": "^3.4.2",
     "remap-istanbul": "^0.9.5",
     "source-map-support": "^0.4.15",

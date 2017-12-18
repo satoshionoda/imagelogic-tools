@@ -1,6 +1,6 @@
 import {remapQueriedItems} from "./remapQueriedItems";
 
-export function qsa(query: string, queryRoot: NodeSelector = document): HTMLElement[] {
+export function qsa<T extends HTMLElement>(query: string, queryRoot: NodeSelector = document): Array<T> {
   let items = queryRoot.querySelectorAll(query);
-  return remapQueriedItems(items);
+  return remapQueriedItems<T>(items);
 }
