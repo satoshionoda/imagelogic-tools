@@ -4,6 +4,7 @@ import {Dispatchable} from "../event/Dispatchable";
 import {FnDelegate} from "../util/FnDelegate";
 
 export class Listen extends Processable{
+
   private delegate:FnDelegate;
 
   constructor(private eventTarget:Dispatchable | HTMLElement, private eventType:string, fn?:Function, context?:any, ...args:any[]){
@@ -23,6 +24,8 @@ export class Listen extends Processable{
       });
     }
   }
+
+  destroy(): void {}
 
   private onEvent(){
     this.dispatch(ProcessEvent.ON_LISTEN);

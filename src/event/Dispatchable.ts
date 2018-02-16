@@ -2,47 +2,47 @@ import {FauxEvent} from "./FauxEvent";
 import {FnDelegate} from "../util/FnDelegate";
 
 export class Dispatchable {
-  private dispatchers:Object = {};
+  private dispatchers: Object = {};
 
-  public bind(type:string, delegate:FnDelegate);
-  public bind(type:string,fn:Function, context?:any, ...args:any[]);
-  public bind(type:string, param1:any, param2?:any, ...rest:any[]) {
-    let d:FnDelegate;
+  public bind(type: string, delegate: FnDelegate);
+  public bind(type: string, fn: Function, context?: any, ...args: any[]);
+  public bind(type: string, param1: any, param2?: any, ...rest: any[]) {
+    let d: FnDelegate;
 
-    if(typeof(param1) === 'function'){
+    if(typeof(param1) === "function") {
       d = new FnDelegate(param1, param2, ...rest);
-    }else{
+    } else {
       d = param1;
     }
 
-    if(typeof this.dispatchers[type] === 'undefined'){
+    if(typeof this.dispatchers[type] === "undefined") {
       this.dispatchers[type] = [];
     }
 
     this.dispatchers[type].push(d);
   }
 
-  public unbind(type:string, fn?:Function){
-    let dispatcher:any = this.dispatchers[type] || [],
-      l = dispatcher.length,
-      i,
-      handler:FnDelegate;
-    for(i=l-1; i >= 0; i--){
+  public unbind(type: string, fn?: Function) {
+    let dispatcher: any = this.dispatchers[type] || [];
+    let l = dispatcher.length;
+    let i: number;
+    let handler: FnDelegate;
+    for(i = l - 1; i >= 0; i--) {
       handler = dispatcher[i];
-      if(fn === undefined){
-        dispatcher.splice(i,1);
-      }else if(fn === handler.fn){
-        dispatcher.splice(i,1);
+      if(fn === undefined) {
+        dispatcher.splice(i, 1);
+      } else if(fn === handler.fn) {
+        dispatcher.splice(i, 1);
       }
     }
   }
 
-  public dispatch(str:string):void;
-  public dispatch(e:FauxEvent):void;
-  public dispatch(param1:any):void{
-    let type:string,
-      e:FauxEvent;
-    switch(true){
+  public dispatch(str: string): void;
+  public dispatch(e: FauxEvent): void;
+  public dispatch(param1: any): void {
+    let type: string;
+    let e: FauxEvent;
+    switch(true) {
       case typeof(param1) === "string":
         type = param1;
         e = new FauxEvent(type);
@@ -53,11 +53,11 @@ export class Dispatchable {
         break;
     }
 
-    let dispatcher = this.dispatchers[type] || [],
-      l = dispatcher.length,
-      i,
-      d:FnDelegate;
-    for(i=0; i<l; i++){
+    let dispatcher = this.dispatchers[type] || [];
+    let l = dispatcher.length;
+    let i;
+    let d: FnDelegate;
+    for(i = 0; i < l; i++) {
       d = dispatcher[i];
 
       e.context = d.context;

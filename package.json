@@ -1,6 +1,6 @@
 {
   "name": "imagelogic-tools",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "typescript toolset for ImageLogic projects",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -30,6 +30,7 @@
     "mocha": "^3.4.2",
     "remap-istanbul": "^0.9.5",
     "source-map-support": "^0.4.15",
+    "tslint": "^5.8.0",
     "typescript": "^2.4.1"
   }
 }

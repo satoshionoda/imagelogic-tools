@@ -15,7 +15,9 @@ export class Func extends Processable{
   }
 
   destroy(){
-    this.delegate.destroy();
-    this.delegate = null;
+    if(this.delegate){
+      this.delegate.destroy();
+      this.delegate = null;
+    }
   }
 }

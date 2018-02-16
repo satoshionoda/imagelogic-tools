@@ -28,9 +28,9 @@ export class Parallel extends Processable{
   }
 
   complete():void{
-    for(let i:number = 0, l:number = this.processList.length;  i < l ; i++){
-      this.processList[i].destroy();
-    }
+    this.processList.forEach((elm) => {
+      elm.destroy();
+    });
     this.isRunning = false;
     super.complete();
   }
@@ -52,7 +52,6 @@ export class Parallel extends Processable{
 
   private onCompleteSingleProcess(){
     this.completedNum++;
-    //console.log('onCompleteSingle', this.completedNum, this.processList.length);
     if(this.completedNum >= this.processList.length){
       this.complete();
     }

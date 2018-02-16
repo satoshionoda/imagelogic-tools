@@ -13,6 +13,7 @@ export function addClassIf(target: Element | Element[] | NodeList, condition:boo
   }else{
     _addClassIf(target, condition, token, remove, alt);
   }
+
 }
 
 function _addClassIf(target:Element, condition:boolean, token:string, remove:boolean, alt:string){

@@ -1,7 +1,7 @@
 import {ValidateResult} from "./ValidateResult";
 import {makeValidateResult} from "./makeValidateResult";
 
-function validateKatakana(targetName: string, msg: string): ValidateResult {
+export function validateKatakana(targetName: string, msg: string): ValidateResult {
   let rObject = makeValidateResult(targetName),
     val = rObject.value;
 

@@ -1,6 +1,7 @@
 import {Processable} from "./Processable";
 
 export class Log extends Processable{
+
   private str:string;
 
   constructor(str:string){
@@ -12,4 +13,6 @@ export class Log extends Processable{
     console.log(this.str);
     super.complete();
   }
+
+  destroy(): void {}
 }

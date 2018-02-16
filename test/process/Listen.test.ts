@@ -24,7 +24,7 @@ class ListenTest{
       });
       listen.execute();
       wait.execute();
-    })
+    });
   }
   canListenAndTriggerExternal(){
     it("can listen and trigger external function", (done) => {

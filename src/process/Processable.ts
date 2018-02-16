@@ -9,7 +9,7 @@ export class Processable extends Dispatchable {
   public execute():void{
     this.complete();
   }
-  public destroy():void{}
+  public destroy():void{};
   public complete():void{
     this.dispatch(new ProcessEvent(ProcessEvent.ON_COMPLETE));
   }
