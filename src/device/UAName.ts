@@ -1,4 +1,4 @@
-export enum UAName{
+export enum UAName {
   WINDOWS_PHONE = "windows-phone",
   ANDROID = "android",
   ANDROID_MOBILE = "android-mobile",
@@ -9,4 +9,7 @@ export enum UAName{
   TABLET = "tablet",
   SMP = "smp",
   MOBILE = "mobile",
+  IE9 = "ie9",
+  IE10 = "ie10",
+  IE11 = "ie11",
 }

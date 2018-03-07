@@ -12,6 +12,9 @@ export class UAChecker {
   private static _isTablet: boolean;
   private static _isSMP: boolean;
   private static _isMobile: boolean;
+  private static _isIE9:boolean;
+  private static _isIE10:boolean;
+  private static _isIE11:boolean;
 
   static isWindowsPhone(addCSSClass: boolean = false): boolean {
     if(UAChecker._isWindowsPhone === undefined) {
@@ -113,6 +116,36 @@ export class UAChecker {
     return UAChecker._isMobile;
   }
 
+  static isIE9(addCSSClass: boolean = false):boolean{
+    if(UAChecker._isIE9 === undefined){
+      UAChecker._isIE9 = navigator.userAgent.match(/MEIE 9\.0/i) !== null;
+    }
+    if(addCSSClass){
+      UAChecker.setCSSClass(UAName.IE9, UAChecker._isIE9);
+    }
+    return UAChecker._isIE9;
+  }
+
+  static isIE10(addCSSClass: boolean = false):boolean{
+    if(UAChecker._isIE10 === undefined){
+      UAChecker._isIE10 = navigator.userAgent.match(/MEIE 10\.0/i) !== null;
+    }
+    if(addCSSClass){
+      UAChecker.setCSSClass(UAName.IE10, UAChecker._isIE10);
+    }
+    return UAChecker._isIE10;
+  }
+
+  static isIE11(addCSSClass: boolean = false):boolean{
+    if(UAChecker._isIE11 === undefined){
+      UAChecker._isIE11 = navigator.userAgent.match(/MEIE 11\.0/i) !== null;
+    }
+    if(addCSSClass){
+      UAChecker.setCSSClass(UAName.IE11, UAChecker._isIE11);
+    }
+    return UAChecker._isIE11;
+  }
+
   static reset() {
     UAChecker._isWindowsPhone = undefined;
     UAChecker._isAndroid = undefined;
@@ -124,6 +157,9 @@ export class UAChecker {
     UAChecker._isTablet = undefined;
     UAChecker._isSMP = undefined;
     UAChecker._isMobile = undefined;
+    UAChecker._isIE9 = undefined;
+    UAChecker._isIE10 = undefined;
+    UAChecker._isIE11 = undefined;
 
     for(let className in UAName) {
       document.documentElement.classList.remove(className);

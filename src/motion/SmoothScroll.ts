@@ -80,6 +80,7 @@ export class SmoothScroll {
     this.interval = 16;
     this.timeLapsed = 0;
     this.percentage = 0;
+    // console.log(sso);
 
     this.intervalID = window.setInterval(() => {
       this.processLoop();
@@ -99,6 +100,7 @@ export class SmoothScroll {
       window.clearInterval(this.intervalID);
       this.isScrolling = false;
     }
+    // console.log(this.position);
   }
 
   private constructor() {
