@@ -12,4 +12,5 @@ export enum UAName {
   IE9 = "ie9",
   IE10 = "ie10",
   IE11 = "ie11",
+  IE = "ie",
 }
