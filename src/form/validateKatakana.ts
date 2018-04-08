@@ -7,6 +7,8 @@ export function validateKatakana(targetName: string, msg: string): ValidateResul
 
   rObject.result = val.match(/^[ァ-ン\s　]+$/) !== null;
 
+  // should pass the validation if the length is 0
+  // otherwise it denies even if the field is not required.
   if(val.length === 0) {
     rObject.result = true;
   }

@@ -7,11 +7,13 @@ export function validateLength(targetName, msg: string, min: number = 0, max: nu
   let l: number = rObject.value.length;
   rObject.result = (l >= min) && (l <= max);
 
-  if(l == 0) {
+  // should pass the validation if the length is 0
+  // otherwise it denies even if the field is not required.
+  if(l === 0) {
     rObject.result = true;
   }
 
-  if(rObject.result == false) {
+  if(rObject.result === false) {
     rObject.msg = msg;
   }
 
