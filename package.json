@@ -1,6 +1,6 @@
 {
   "name": "imagelogic-tools",
-  "version": "0.1.92",
+  "version": "0.1.93",
   "description": "typescript toolset for ImageLogic projects",
   "main": "./index.js",
   "typings": "./index.d.ts",

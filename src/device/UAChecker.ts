@@ -16,145 +16,159 @@ export class UAChecker {
   private static _isIE10: boolean;
   private static _isIE11: boolean;
   private static _isIE: boolean;
+  private static _isSafari: boolean;
 
   static isWindowsPhone(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isWindowsPhone === undefined) {
+    if (UAChecker._isWindowsPhone === undefined) {
       UAChecker._isWindowsPhone = navigator.userAgent.match(/Windows Phone/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.WINDOWS_PHONE, UAChecker._isWindowsPhone);
     }
     return UAChecker._isWindowsPhone;
   }
 
   static isAndroid(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isAndroid === undefined) {
+    if (UAChecker._isAndroid === undefined) {
       UAChecker._isAndroid = navigator.userAgent.match(/Android/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.ANDROID, UAChecker._isAndroid);
     }
     return UAChecker._isAndroid;
   }
 
   static isAndroidMobile(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isAndroidMobile === undefined) {
+    if (UAChecker._isAndroidMobile === undefined) {
       UAChecker._isAndroidMobile = navigator.userAgent.match(/Android.*Mobile/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.ANDROID_MOBILE, UAChecker._isAndroidMobile);
     }
     return UAChecker._isAndroidMobile;
   }
 
   static isAndroidTablet(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isAndroidTablet === undefined) {
+    if (UAChecker._isAndroidTablet === undefined) {
       UAChecker._isAndroidTablet = !UAChecker.isAndroidMobile(addCSSClass) && UAChecker.isAndroid(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.ANDROID_TABLET, UAChecker._isAndroidTablet);
     }
     return UAChecker._isAndroidTablet;
   }
 
   static isIPad(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIPad === undefined) {
+    if (UAChecker._isIPad === undefined) {
       UAChecker._isIPad = navigator.userAgent.match(/iPad/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IPAD, UAChecker._isIPad);
     }
     return UAChecker._isIPad;
   }
 
   static isIphone(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIPhone === undefined) {
+    if (UAChecker._isIPhone === undefined) {
       UAChecker._isIPhone = navigator.userAgent.match(/iPhone/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IPHONE, UAChecker._isIPhone);
     }
     return UAChecker._isIPhone;
   }
 
   static isIOS(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIOS === undefined) {
+    if (UAChecker._isIOS === undefined) {
       UAChecker._isIOS = UAChecker.isIPad(addCSSClass) || UAChecker.isIphone(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IOS, UAChecker._isIOS);
     }
     return UAChecker._isIOS;
   }
 
   static isTablet(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isTablet === undefined) {
+    if (UAChecker._isTablet === undefined) {
       UAChecker._isTablet = UAChecker.isIPad(addCSSClass) || UAChecker.isAndroidTablet(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.TABLET, UAChecker._isTablet);
     }
     return UAChecker._isTablet;
   }
 
   static isSMP(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isSMP === undefined) {
+    if (UAChecker._isSMP === undefined) {
       UAChecker._isSMP = UAChecker.isIphone(addCSSClass) || UAChecker.isAndroidMobile(addCSSClass) || UAChecker.isWindowsPhone(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.SMP, UAChecker._isSMP);
     }
     return UAChecker._isSMP;
   }
 
   static isMobile(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isMobile === undefined) {
+    if (UAChecker._isMobile === undefined) {
       UAChecker._isMobile = UAChecker.isSMP(addCSSClass) || UAChecker.isTablet(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.MOBILE, UAChecker._isMobile);
     }
     return UAChecker._isMobile;
   }
 
   static isIE9(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIE9 === undefined) {
+    if (UAChecker._isIE9 === undefined) {
       UAChecker._isIE9 = navigator.userAgent.match(/MSIE 9\.0/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IE9, UAChecker._isIE9);
     }
     return UAChecker._isIE9;
   }
 
   static isIE10(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIE10 === undefined) {
+    if (UAChecker._isIE10 === undefined) {
       UAChecker._isIE10 = navigator.userAgent.match(/MSIE 10\.0/i) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IE10, UAChecker._isIE10);
     }
     return UAChecker._isIE10;
   }
 
   static isIE11(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIE11 === undefined) {
+    if (UAChecker._isIE11 === undefined) {
       UAChecker._isIE11 = navigator.userAgent.match((/(trident).*(rv:11\.0)/i)) !== null;
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IE11, UAChecker._isIE11);
     }
     return UAChecker._isIE11;
   }
 
   static isIE(addCSSClass: boolean = false): boolean {
-    if(UAChecker._isIE === undefined) {
+    if (UAChecker._isIE === undefined) {
       UAChecker._isIE = UAChecker.isIE9(addCSSClass) || UAChecker.isIE10(addCSSClass) || UAChecker.isIE11(addCSSClass);
     }
-    if(addCSSClass) {
+    if (addCSSClass) {
       UAChecker.setCSSClass(UAName.IE, UAChecker._isIE);
     }
     return UAChecker._isIE;
+  }
+
+  static isSafari(addCSSClass: boolean = false): boolean {
+    if (UAChecker._isSafari === undefined) {
+      let ua = window.navigator.userAgent.toLowerCase();
+      let isSafari: boolean = ua.indexOf("safari") !== -1 && ua.indexOf("chrome") === -1;
+      let notIOS: boolean = !(UAChecker.isIOS());
+      UAChecker._isSafari = notIOS && isSafari;
+    }
+    if (addCSSClass) {
+      UAChecker.setCSSClass(UAName.SAFARI, UAChecker._isSafari);
+    }
+    return UAChecker._isSafari;
   }
 
   static reset() {
@@ -171,8 +185,9 @@ export class UAChecker {
     UAChecker._isIE9 = undefined;
     UAChecker._isIE10 = undefined;
     UAChecker._isIE11 = undefined;
+    UAChecker._isSafari = undefined;
 
-    for(let className in UAName) {
+    for (let className in UAName) {
       document.documentElement.classList.remove(className);
       document.documentElement.classList.remove(`not-${className}`);
     }

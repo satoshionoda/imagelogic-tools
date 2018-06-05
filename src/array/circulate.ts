@@ -1,4 +1,4 @@
-export function curculate<T>(target: Array<T>, value: number): Array<T> {
+export function circulate<T>(target: Array<T>, value: number): Array<T> {
   if(value === 0) {
     return target.concat();
   }

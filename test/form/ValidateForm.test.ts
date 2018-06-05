@@ -98,7 +98,7 @@ class ValidateFormTest {
 }
 
 
-describe.only("validate form inputs", () => {
+describe("validate form inputs", () => {
   beforeEach(() => {
     document.body.innerHTML = window.__html__["test/fixtures/form.html"];
   });
