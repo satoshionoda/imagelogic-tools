@@ -38,7 +38,7 @@ export class SmoothScroll {
   }
 
   public static animate(sso: SmoothScrollOptions);
-  public static animate(target: HTMLElement, sso?: SmoothScrollOptions);
+  public static animate(target: HTMLElement | number, sso?: SmoothScrollOptions);
   public static animate(param1: any, param2?: any) {
     let instance = SmoothScroll.getInstance();
 
@@ -54,7 +54,7 @@ export class SmoothScroll {
 
   private _animate(sso: SmoothScrollOptions) {
     if(this.isScrolling) { return false; }
-    if(!sso.target) { return false; }
+    if(sso.target === undefined) { return false; }
 
     this.isScrolling = true;
 
@@ -73,7 +73,7 @@ export class SmoothScroll {
     this.options = sso;
 
     this.startLocation = window.pageYOffset;
-    this.endLocation = sso.target.offsetTop - sso.offset;
+    this.endLocation = this.determineEndLocation(sso);
     this.distance = this.endLocation - this.startLocation;
     this.position = this.startLocation;
 
@@ -103,6 +103,14 @@ export class SmoothScroll {
     // console.log(this.position);
   }
 
+  private determineEndLocation(sso:SmoothScrollOptions):number{
+    if(typeof sso.target === "number"){
+      return sso.target;
+    }else{
+      return sso.target.offsetTop - sso.offset;
+    }
+  }
+
   private constructor() {
     this.defaultOptions = {
       duration: 1,
@@ -114,7 +122,7 @@ export class SmoothScroll {
 }
 
 export interface SmoothScrollOptions {
-  target?: HTMLElement;
+  target?: HTMLElement | number;
   duration?: number;
   easing?: EasingType;
   offset?: number;
