@@ -8,6 +8,8 @@ import {validateAndEmpty} from "../../src/form/validateAndEmpty";
 import {validateOrEmpty} from "../../src/form/validateOrEmpty";
 import {validateChecked} from "../../src/form/validateChecked";
 import {qsa} from "../../src/dom/qsa";
+import {qs} from "../../src/dom/qs";
+import {validateBirthday} from "../../src/form/validteBirthday";
 
 let expect = chai.expect;
 
@@ -92,6 +94,23 @@ class ValidateFormTest {
       let r2 = validateChecked("checkTest", "");
       expect(r2.result).to.be.true;
       //
+    });
+
+    it.only("validates birthday", () => {
+      const nameY = "birthYear";
+      const nameM = "birthMonth";
+      const nameD = "birthDay";
+      const inputY:HTMLInputElement = qs(`input[name=${nameY}]`);
+      const inputM:HTMLInputElement = qs(`input[name=${nameM}]`);
+      const inputD:HTMLInputElement = qs(`input[name=${nameD}]`);
+      //
+      inputY.value = "1983";
+      inputM.value = "9";
+      inputD.value = "15";
+      let r1 = validateBirthday(nameY, nameM, nameD, "");
+
+      expect(r1.result).to.be.true;
+
     });
   }
 
