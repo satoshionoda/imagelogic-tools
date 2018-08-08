@@ -107,7 +107,7 @@ export class SmoothScroll {
     if(typeof sso.target === "number"){
       return sso.target;
     }else{
-      return sso.target.offsetTop - sso.offset;
+      return window.pageYOffset + sso.target.offsetTop - sso.offset;
     }
   }
 
