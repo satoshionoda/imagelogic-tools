@@ -1,6 +1,6 @@
 {
   "name": "imagelogic-tools",
-  "version": "0.1.98",
+  "version": "0.2.0",
   "description": "typescript toolset for ImageLogic projects",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -14,7 +14,7 @@
     "@types/mocha": "^5.0.0",
     "chai": "^4.0.2",
     "istanbul": "^0.4.5",
-    "karma": "^2.0.0",
+    "karma": "^3.1.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
@@ -28,10 +28,10 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-typescript": "^3.0.9",
     "mocha": "^5.0.5",
-    "remap-istanbul": "^0.11.0",
+    "remap-istanbul": "^0.12.0",
     "source-map-support": "^0.5.4",
     "tslint": "^5.8.0",
-    "typescript": "^2.4.1"
+    "typescript": "^3.1.6"
   },
   "dependencies": {}
 }
