@@ -31,7 +31,7 @@ export class MediaQueryHelper extends Dispatchable {
     nums.forEach((elm) => {
       let mq: MediaQueryList = window.matchMedia(`(max-width:${elm}px)`);
       mq.addListener((e) => {
-        this.onMatchMQ(e);
+        this.onMatchMQ();
       });
       this.mqCollection.push(mq);
     });
@@ -41,7 +41,7 @@ export class MediaQueryHelper extends Dispatchable {
     return this;
   }
 
-  private onMatchMQ(mq: MediaQueryList) {
+  private onMatchMQ() {
     this.processMQ();
   }
 

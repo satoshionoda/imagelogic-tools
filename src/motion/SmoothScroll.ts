@@ -88,8 +88,11 @@ export class SmoothScroll {
   }
 
   private processLoop() {
+    if(this.options.duration <= 10){
+      this.options.duration = this.options.duration * 1000;
+    }
     this.timeLapsed += this.interval;
-    this.percentage = (this.timeLapsed / (this.options.duration * 1000));
+    this.percentage = (this.timeLapsed / (this.options.duration));
     this.percentage = (this.percentage > 1) ? 1 : this.percentage;
     let eased = Easing.calculate(this.percentage, this.options.easing);
     this.position = Math.floor(this.startLocation + this.distance * eased);
@@ -113,7 +116,7 @@ export class SmoothScroll {
 
   private constructor() {
     this.defaultOptions = {
-      duration: 1,
+      duration: 1000,
       easing: EasingType.linear,
       offset: 0
     };
