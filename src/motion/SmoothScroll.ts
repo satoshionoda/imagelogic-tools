@@ -1,4 +1,5 @@
 import {Easing, EasingType} from "./Easing";
+import {viewportOffset} from "../layout/viewportOffset";
 
 export class SmoothScroll {
   private static instance: SmoothScroll;
@@ -110,7 +111,7 @@ export class SmoothScroll {
     if(typeof sso.target === "number"){
       return sso.target;
     }else{
-      return sso.target.offsetTop - sso.offset;
+      return viewportOffset(sso.target).y - sso.offset;
     }
   }
 
