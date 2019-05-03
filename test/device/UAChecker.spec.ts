@@ -1,5 +1,4 @@
-import {UAChecker} from "../../src/device/UAChecker"
-let expect = chai.expect;
+import {UAChecker} from "../../src/device/UAChecker";
 
 const UA_IPHONE:string = "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; ja-jp) AppleWebKit/533.17.9 ";
 const UA_IPAD:string = "Mozilla/5.0 (iPad; CPU OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F69 Safari/600.1.4";
@@ -8,24 +7,24 @@ const UA_KINDLE_FIRE:string = "Mozilla/5.0 (Linux; Android 4.4.3; KFTHWI Build/K
 
 describe("UAchecker", () => {
   describe("when UA is iPhone", () => {
-    before(() => {
+    beforeEach(() => {
       UAChecker.reset();
       changeUserAgent(UA_IPHONE);
     });
     it("is iPhone", () => {
-      expect(UAChecker.isIphone()).to.be.true;
+      expect(UAChecker.isIphone()).toBeTruthy();
     });
     it("is NOT iPad", () => {
-      expect(UAChecker.isIPad()).to.be.false;
+      expect(UAChecker.isIPad()).toBeFalsy();
     });
     it("is iOS", () => {
-      expect(UAChecker.isIOS()).to.be.true;
+      expect(UAChecker.isIOS()).toBeTruthy();
     });
     it("is NOT Android", () => {
-      expect(UAChecker.isAndroid()).to.be.false;
+      expect(UAChecker.isAndroid()).toBeFalsy();
     });
     it("is mobile", () => {
-      expect(UAChecker.isMobile()).to.be.true;
+      expect(UAChecker.isMobile()).toBeTruthy();
     });
   });
 });
@@ -35,6 +34,6 @@ describe("UAchecker", () => {
 // http://qiita.com/kyohei8/items/bdf3e7b76e1218d06b3d
 const changeUserAgent = (ua) => {
   // Chrome, fx, IE11
-  window.navigator.__defineGetter__('userAgent', () => ua);
+  window.navigator.__defineGetter__("userAgent", () => ua);
   // Safari
 }

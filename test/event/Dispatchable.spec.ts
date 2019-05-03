@@ -1,17 +1,17 @@
 import {Dispatchable} from "../../src/event/Dispatchable";
 import {FauxEvent} from "../../src/event/FauxEvent";
 import {FnDelegate} from "../../src/util/FnDelegate";
-let expect = chai.expect;
-const EVENT_COMPLETE:string = 'complete';
-const EVENT_DONE:string = 'done';
+
+const EVENT_COMPLETE: string = "complete";
+const EVENT_DONE: string = "done";
 
 
-class DispatchableTest{
+class DispatchableSpec {
 
-  private val:string = "test";
-  private handlingCount:number = 0;
+  private val: string = "test";
+  private handlingCount: number = 0;
 
-  constructor(){
+  constructor() {
     this.canBindInternal();
     this.canBindExternal();
     this.canBindWithDelegateClass();
@@ -21,50 +21,54 @@ class DispatchableTest{
     this.canUnbindExternal();
     this.canUnbindMulti();
   }
-  canBindInternal(){
+
+  canBindInternal() {
     it("can bind internally", (done) => {
-      let obj:Dispatchable = new Dispatchable();
+      let obj: Dispatchable = new Dispatchable();
       obj.bind(EVENT_COMPLETE, () => {
         done();
       });
       obj.dispatch(EVENT_COMPLETE);
     });
   }
-  canBindExternal(){
+
+  canBindExternal() {
     it("can bind external function", (done) => {
-      let obj:Dispatchable = new Dispatchable();
+      let obj: Dispatchable = new Dispatchable();
       obj.bind(EVENT_COMPLETE, this.handler, this, done);
       obj.dispatch(EVENT_COMPLETE);
     });
   }
-  canBindWithDelegateClass(){
+
+  canBindWithDelegateClass() {
     it("can bind with the delegate class", (done) => {
-      let obj:Dispatchable = new Dispatchable(),
-        delegate:FnDelegate = new FnDelegate(this.handler, this, done);
+      let obj: Dispatchable = new Dispatchable(),
+        delegate: FnDelegate = new FnDelegate(this.handler, this, done);
       obj.bind(EVENT_COMPLETE, delegate);
       obj.dispatch(EVENT_COMPLETE);
     });
   }
-  canHandleMultipleInternal(){
+
+  canHandleMultipleInternal() {
     it("can handle multiple callbacks", (done) => {
-      let obj:Dispatchable = new Dispatchable(),
+      let obj: Dispatchable = new Dispatchable(),
         count = 0;
 
       obj.bind(EVENT_COMPLETE, () => {
-        count ++;
-        if(count === 3){
+        count++;
+        if (count === 3) {
           done();
         }
       });
       obj.bind(EVENT_COMPLETE, () => {
-        count ++;
-        if(count === 3){
+        count++;
+        if (count === 3) {
           done();
         }
       });
       obj.bind(EVENT_DONE, () => {
-        count ++;
-        if(count === 3){
+        count++;
+        if (count === 3) {
           done();
         }
       });
@@ -72,9 +76,10 @@ class DispatchableTest{
       obj.dispatch(EVENT_DONE);
     });
   }
-  canHandleMultipleExternal(){
+
+  canHandleMultipleExternal() {
     it("can handle multiple external events", (done) => {
-      let obj:Dispatchable = new Dispatchable();
+      let obj: Dispatchable = new Dispatchable();
       obj.bind(EVENT_COMPLETE, this.handlerMulti, this, done, 2);
       obj.bind(EVENT_COMPLETE, this.handlerMulti, this, done, 3);
       obj.bind(EVENT_DONE, this.handlerMulti, this, done, 10);
@@ -84,30 +89,34 @@ class DispatchableTest{
     });
   }
 
-  canUnbindInternal(){
+  canUnbindInternal() {
     it("can unbind internally", (done) => {
-      let obj:Dispatchable = new Dispatchable();
-      function onComplete(){
+      let obj: Dispatchable = new Dispatchable();
+
+      function onComplete() {
         throw new Error("this shouldn't happen");
       }
+
       obj.bind(EVENT_COMPLETE, onComplete);
       obj.unbind(EVENT_COMPLETE, onComplete);
       obj.dispatch(EVENT_COMPLETE);
       done();
     });
   }
-  canUnbindExternal(){
+
+  canUnbindExternal() {
     it("can unbind externally", (done) => {
-      let obj:Dispatchable = new Dispatchable();
+      let obj: Dispatchable = new Dispatchable();
       obj.bind(EVENT_COMPLETE, this.handlerWithError);
       obj.bind(EVENT_COMPLETE, this.handler, this, done);
       obj.unbind(EVENT_COMPLETE, this.handlerWithError);
       obj.dispatch(EVENT_COMPLETE);
     });
   }
-  canUnbindMulti(){
+
+  canUnbindMulti() {
     it("can unbind multi", (done) => {
-      let obj:Dispatchable = new Dispatchable();
+      let obj: Dispatchable = new Dispatchable();
       obj.bind(EVENT_COMPLETE, this.handlerWithError);
       obj.bind(EVENT_COMPLETE, this.handlerWithError2);
       obj.unbind(EVENT_COMPLETE);
@@ -116,29 +125,31 @@ class DispatchableTest{
     });
   }
 
-  handler(e:FauxEvent, done){
-    expect(this.val).to.be.equal("test");
-    expect(this).to.be.equal(e.context);
-    if(done){
-      done();
-    }
-  }
-  handlerMulti(e:FauxEvent, done, add){
-    this.handlingCount += add;
-    // console.log(add);
-    if(this.handlingCount === 20){
+  handler(e: FauxEvent, done) {
+    expect(this.val).toBe("test");
+    expect(this).toBe(e.context);
+    if (done) {
       done();
     }
   }
 
-  handlerWithError(e?:FauxEvent){
+  handlerMulti(e: FauxEvent, done, add) {
+    this.handlingCount += add;
+    // console.log(add);
+    if (this.handlingCount === 20) {
+      done();
+    }
+  }
+
+  handlerWithError(e?: FauxEvent) {
     throw new Error("this shouldn't happen");
   }
-  handlerWithError2(e?:FauxEvent){
+
+  handlerWithError2(e?: FauxEvent) {
     throw new Error("this shouldn't happen");
   }
 }
 
 describe("dispatchable", () => {
-  new DispatchableTest();
+  new DispatchableSpec();
 });

@@ -1,8 +1,7 @@
 import {Processable} from "../../src/process/Processable";
 import {ProcessEvent} from "../../src/process/ProcessEvent";
-let expect = chai.expect;
 
-class ProcessableTest{
+class ProcessableSpec{
   private val:string = "test";
 
   constructor(){
@@ -29,8 +28,8 @@ class ProcessableTest{
 
 
   handler(e:ProcessEvent, done){
-    expect(this.val).to.be.equal("test");
-    expect(this).to.be.equal(e.context);
+    expect(this.val).toBe("test");
+    expect(this).toBe(e.context);
     if(done){
       done();
     }
@@ -39,5 +38,5 @@ class ProcessableTest{
 }
 
 describe("processable", () => {
-  new ProcessableTest();
+  new ProcessableSpec();
 });

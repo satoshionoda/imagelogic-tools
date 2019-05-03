@@ -1,9 +1,7 @@
 import {IntervalCheck} from "../../src/process/IntervalCheck";
 import {ProcessEvent} from "../../src/process/ProcessEvent";
 
-let expect = chai.expect;
-
-class IntervalCheckTest{
+class IntervalCheckSpec{
   private val:number = 0;
 
   constructor(){
@@ -41,5 +39,5 @@ class IntervalCheckTest{
 }
 
 describe("process interval check", () => {
-  new IntervalCheckTest();
+  new IntervalCheckSpec();
 });

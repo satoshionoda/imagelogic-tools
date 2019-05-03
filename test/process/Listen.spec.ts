@@ -2,9 +2,8 @@ import {Listen} from "../../src/process/Listen";
 import {Wait} from "../../src/process/Wait";
 import {ProcessEvent} from "../../src/process/ProcessEvent";
 import {FauxEvent} from "../../src/event/FauxEvent";
-let expect = chai.expect;
 
-class ListenTest{
+class ListenSpec{
 
   private val:string = "test";
 
@@ -57,17 +56,14 @@ class ListenTest{
   }
 
   trigger(e:FauxEvent, done){
-    expect(this.val).to.be.equal("test");
+    expect(this.val).toBe("test");
     done();
   }
 }
 
 describe("process listen", () => {
   beforeEach(() => {
-    //how to implement fixtures
-    //http://webdesign-dackel.com/2015/11/02/karma-mocha-power-assert-dom-test/
-    document.body.innerHTML = window.__html__["test/fixtures/btns.html"];
-    //window.navigator
+    loadFixtures("btns.html");
   });
-  new ListenTest();
+  new ListenSpec();
 });

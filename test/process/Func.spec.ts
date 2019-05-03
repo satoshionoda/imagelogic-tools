@@ -1,8 +1,6 @@
 import {Func} from "../../src/process/Func";
 
-let expect = chai.expect;
-
-class FuncTest{
+class FuncSpec{
   private val:string = "test";
 
   constructor(){
@@ -34,11 +32,11 @@ class FuncTest{
   }
 
   trigger(done){
-    expect(this.val).to.be.equal("test");
+    expect(this.val).toBe("test");
     done();
   }
 }
 
 describe("process func", () => {
-  new FuncTest();
+  new FuncSpec();
 });

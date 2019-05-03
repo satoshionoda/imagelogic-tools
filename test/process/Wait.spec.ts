@@ -1,9 +1,8 @@
 import {FauxEvent} from "../../src/event/FauxEvent";
 import {Wait} from "../../src/process/Wait";
 import {ProcessEvent} from "../../src/process/ProcessEvent";
-let expect = chai.expect;
 
-class WaitTest{
+class WaitSpec{
   private val:string = "test";
 
   constructor(){
@@ -48,12 +47,12 @@ class WaitTest{
   }
 
   trigger(e:FauxEvent, done){
-    expect(this.val).to.be.equal("test");
-    expect(e.type).to.be.equal(ProcessEvent.ON_WAIT);
+    expect(this.val).toBe("test");
+    expect(e.type).toBe(ProcessEvent.ON_WAIT);
     done();
   }
 
 }
 describe("process wait", () => {
-  new WaitTest();
+  new WaitSpec();
 });

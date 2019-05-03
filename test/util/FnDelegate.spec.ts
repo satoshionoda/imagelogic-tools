@@ -1,6 +1,5 @@
 import {FnDelegate} from "../../src/util/FnDelegate";
 
-let expect = chai.expect;
 
 class FnDelegateTest {
   private val: string = "test";
@@ -45,19 +44,19 @@ class FnDelegateTest {
   }
 
   trigger1(done) {
-    expect(this.val).to.be.equal("test");
+    expect(this.val).toBe("test");
     done();
   }
 
   trigger2(val1, val2, done) {
-    expect(val1).to.be.equal(1);
-    expect(val2).to.be.equal(2);
+    expect(val1).toBe(1);
+    expect(val2).toBe(2);
     done();
   }
 
   trigger3(done, val1, val2) {
-    expect(val1).to.be.equal(1);
-    expect(val2).to.be.equal(2);
+    expect(val1).toBe(1);
+    expect(val2).toBe(2);
     done();
   }
 }

@@ -3,9 +3,8 @@ import {Parallel} from "../../src/process/Parallel";
 import {ProcessEvent} from "../../src/process/ProcessEvent";
 import {Wait} from "../../src/process/Wait";
 
-let expect = chai.expect;
 
-class ParallelTest {
+class ParallelSpec {
   constructor() {
     this.canExecuteParallel();
   }
@@ -35,11 +34,11 @@ class ParallelTest {
         }
       });
       p.execute();
-      expect(p.getIsRunning()).to.be.equal(true);
+      expect(p.getIsRunning()).toBe(true);
     });
   }
 }
 
 describe("process parallel", () => {
-  new ParallelTest();
+  new ParallelSpec();
 });
